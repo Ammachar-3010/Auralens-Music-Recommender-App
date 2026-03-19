@@ -1,45 +1,139 @@
-# Mood Music Recommender (Starter Kit)
+# 🎵 Auralens - Mood-Based Music Recommender
 
-Full-stack example based on your workflow.
+## 🚀 Overview
 
-## Stack
-- **Frontend**: React (Vite), react-router, react-player
-- **Backend**: Flask + CORS
-- **Data**: `backend/songs.csv` (local WAVs + YouTube URLs)
+**Auralens** is a full-stack music recommendation system that suggests songs based on user mood input. The application analyzes user-provided text and generates personalized song recommendations, improving music discovery and user engagement.
 
-## Run Backend
+---
+
+## 🛠 Tech Stack
+
+* **Frontend**: React (Vite), React Router, React Player
+* **Backend**: Flask, Flask-CORS
+* **Database/Data Source**: CSV-based dataset (`songs.csv`)
+* **Other Tools**: LocalStorage (for history), REST APIs
+
+---
+
+## ✨ Features
+
+* 🎯 Mood-based song recommendation using text input
+* 🎧 Supports both YouTube streaming and local audio playback
+* 🧠 Rule-based mood detection system
+* 📜 Search history stored in browser (localStorage)
+* 🔐 Basic login simulation with token storage
+* ⚡ Fast and responsive UI
+
+---
+
+## 🏗️ Project Structure
+
+```
+Auralens-Music-Recommender-App/
+│
+├── frontend/              # React frontend
+│   ├── src/
+│   ├── package.json
+│
+├── backend/               # Flask backend
+│   ├── app.py
+│   ├── songs.csv
+│   ├── static/
+│   │   └── songs/         # Local audio files
+│   ├── requirements.txt
+│
+├── README.md
+├── .gitignore
+```
+
+---
+
+## ▶️ How to Run Locally
+
+### 🔹 Backend Setup
+
 ```bash
 cd backend
-python -m venv .venv && source .venv/bin/activate  # Windows: .venv\Scripts\activate
+python -m venv .venv
+
+# Activate virtual environment
+# Windows:
+.venv\Scripts\activate
+# Mac/Linux:
+source .venv/bin/activate
+
 pip install -r requirements.txt
 python app.py
 ```
-Backend runs at http://localhost:5000
 
-## Run Frontend
+👉 Backend runs at: http://localhost:5000
+
+---
+
+### 🔹 Frontend Setup
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-Frontend dev server: http://localhost:5173
 
-## How it Works
-1. Home page lets you type mood text or click mood chips.
-2. POST to `/recommend` → backend detects mood (keyword rules).
-3. Backend returns `mood` and `recommendations` (title + url).
-4. Frontend uses:
-   - **ReactPlayer** to play **YouTube** links (embedded).
-   - **<audio>** element to play **local** WAV files served from Flask static.
-5. History page stores last 50 queries in `localStorage`.
-6. Login page hits `/auth/login` (dummy) and stores token in `localStorage`.
+👉 Frontend runs at: http://localhost:5173
 
-## Why audio might not play
-- YouTube links **don’t work** in `<audio>`; they must be embedded with ReactPlayer.
-- Local files must be absolute URLs (the backend normalizes `/static/...` to full URL).
-- Check browser autoplay policies; click **Play** if muted/blocked.
+---
 
-## Customizing
-- Add/remove songs in `backend/songs.csv`. For local files, put WAV/MP3 in `backend/static/songs/`.
-- Expand `detect_mood()` for better NLP (spaCy/transformers).
-- Replace `/auth/login` with real auth and DB if needed.
+## 🔄 Application Workflow
+
+1. User enters mood text or selects mood options
+2. Frontend sends request to `/recommend` API
+3. Backend processes input using rule-based logic
+4. Returns a list of recommended songs
+5. Frontend displays results and enables playback:
+
+   * **ReactPlayer** → YouTube videos
+   * **HTML `<audio>`** → Local audio files
+
+---
+
+## ⚠️ Important Notes
+
+* YouTube links cannot be played using `<audio>` — use **ReactPlayer**
+* Local files must be placed inside `backend/static/songs/`
+* Browser autoplay policies may require manual interaction (click play)
+
+---
+
+## 📈 Future Enhancements
+
+* 🤖 Integrate machine learning models (Transformers, NLP)
+* 📊 Improve recommendation accuracy using user behavior data
+* 🔐 Implement secure authentication (JWT)
+* ☁️ Deploy application using cloud platforms (Render, Vercel)
+* 🎵 Integrate Spotify API for real-time recommendations
+
+---
+
+
+
+
+
+## 💡 Key Highlights
+
+* Full-stack application with REST API integration
+* Real-time recommendation workflow
+* Clean and responsive UI
+* Supports multimedia playback (YouTube + local audio)
+
+---
+
+## 👨‍💻 Author
+
+**Ammachar A**
+
+* GitHub: https://github.com/Ammachar-3010
+
+---
+
+## ⭐ If you like this project
+
+Give it a ⭐ on GitHub and feel free to contribute!
